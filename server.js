@@ -8,6 +8,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
  
 module.exports = app;
 
+app.get("/", (req, res) => {
+
+    res.send({ hello: "world" });
+
+});
+
 app.post('/test', (request, response) => {
    console.log(request.body);
 });
