@@ -38,7 +38,7 @@ app.post('/test', (request, response) => {
    console.log("Password is",mypass);
    console.log("Host is",myhost);
    console.log("Database is",mydb);
- /*  conn.connect(function(err) {
+   conn.connect(function(err) {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
    });
@@ -46,7 +46,7 @@ app.post('/test', (request, response) => {
   conn.query(stmt, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
-  });*/
+  });
 });
 
 app.listen(port, function() {
