@@ -33,11 +33,11 @@ app.get("/", (req, res) => {
 
 app.post('/test', (request, response) => {
    console.log(request.body);
-   console.log(myuser);
-   console.log(mypass);
-   console.log(myhost);
-   console.log(mydb);
-   conn.connect(function(err) {
+   console.log("User is",myuser);
+   console.log("Password is",mypass);
+   console.log("Host is",myhost);
+   console.log("Database is",mydb);
+ /*  conn.connect(function(err) {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
    });
@@ -45,7 +45,7 @@ app.post('/test', (request, response) => {
   conn.query(stmt, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
-  });
+  });*/
 });
 
 app.listen(port, function() {
