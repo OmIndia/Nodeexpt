@@ -54,7 +54,7 @@ app.post('/test', (request, response) => {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
    });
-   var stmt = "INSERT INTO ecgdata (`id`, `timestamp`, `value`) VALUES(id, ts, val)";
+   var stmt = "INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id, ts, val)";
   conn.query(stmt, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
