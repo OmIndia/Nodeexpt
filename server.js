@@ -42,7 +42,7 @@ app.post('/test', (request, response) => {
    console.log("Database is",mydb);
    console.log(typeof obj.id);
    var obj1 = JSON.parse(obj);
-   var id = parseInt(obj1.id);
+   var patid = parseInt(obj1.id);
    var ts = parseInt(obj1.timestamp);
    var val = parseInt(obj1.value);
    console.log(typeof id);
@@ -53,10 +53,10 @@ app.post('/test', (request, response) => {
    conn.connect(function(err) {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
-   // var stmt = "INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id, ts, val)";
-  //conn.query(stmt, function (err, result) {
-	var params = [id,ts,val];
-	conn.query('INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id,ts,val,1)', function (err, result) {
+   var stmt = "INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES('patid','ts','val')";
+  conn.query(stmt, function (err, result) {
+	//var params = [id,ts,val];
+	//conn.query('INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id,ts,val,1)', function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
     }); 
