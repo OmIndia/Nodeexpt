@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 8080;
 var url = require ('url');
-var mysql = require('mysql')
+var mysql = require('mysql');
 
 
 var db_url = url.parse(process.env.CLEARDB_DATABASE_URL);
@@ -37,7 +37,7 @@ app.post('/test', (request, response) => {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
    });
-   var stmt = "INSERT INTO ecgdata (id, timestamp, value) VALUES (req.id, req.ts, req.val)";
+   var stmt = "INSERT INTO ecgdata (id, timestamp, value) VALUES (req.id, req.timestamp, req.value)";
   conn.query(stmt, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
