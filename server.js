@@ -56,7 +56,7 @@ app.post('/test', (request, response) => {
    // var stmt = "INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id, ts, val)";
   //conn.query(stmt, function (err, result) {
 	var params = [id,ts,val];
-	conn.query('INSERT INTO ecgdata (id, timestamp, value) SET id=?,timestamp=?,value=?',params, function (err, result) {
+	conn.query('INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) SET `id`=?,`timestamp`=?,`value`=?',params, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
     }); 
