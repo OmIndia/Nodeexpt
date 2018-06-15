@@ -40,10 +40,12 @@ app.post('/test', (request, response) => {
    console.log("Password is",mypass);
    console.log("Host is",myhost);
    console.log("Database is",mydb);
+   console.log(typeof obj.id);
    var obj1 = JSON.parse(obj);
-   var id = obj1.id;
-   var ts = obj1.timestamp;
-   var val = obj1.value;
+   var id = parseInt(obj1.id);
+   var ts = parseInt(obj1.timestamp);
+   var val = parseInt(obj1.value);
+   console.log(typeof id);
    console.log("Id is ", id);
    console.log("Timestamp is ", ts);
    console.log("Value is ", val);
@@ -52,7 +54,7 @@ app.post('/test', (request, response) => {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
    });
-   var stmt = "INSERT INTO ecgdata (`id`, `timestamp`, `value`) VALUES (id, ts, val)";
+   var stmt = "INSERT INTO ecgdata (`id`, `timestamp`, `value`) VALUES(id, ts, val)";
   conn.query(stmt, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
