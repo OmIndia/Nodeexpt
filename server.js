@@ -38,7 +38,12 @@ app.post('/test', (request, response) => {
    console.log("Password is",mypass);
    console.log("Host is",myhost);
    console.log("Database is",mydb);
-   conn.connect(function(err) {
+   var obj = JSON.parse(request);
+   console.log("Id is ", obj.id);
+   console.log("Timestamp is ", obj.timestamp);
+   console.log("Value is ", obj.value);
+   
+ /*  conn.connect(function(err) {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
    });
@@ -46,7 +51,7 @@ app.post('/test', (request, response) => {
   conn.query(stmt, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
-  });
+  }); */
 });
 
 app.listen(port, function() {
