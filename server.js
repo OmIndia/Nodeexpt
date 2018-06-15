@@ -45,8 +45,8 @@ app.post('/test', (request, response) => {
    var patid = parseInt(obj1.id);
    var ts = parseInt(obj1.timestamp);
    var val = parseInt(obj1.value);
-   console.log(typeof id);
-   console.log("Id is ", id);
+   console.log(typeof patid);
+   console.log("Id is ", patid);
    console.log("Timestamp is ", ts);
    console.log("Value is ", val);
    
