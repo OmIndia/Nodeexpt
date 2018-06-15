@@ -12,7 +12,7 @@ var db_url = url.parse(process.env.CLEARDB_DATABASE_URL);
 var myuser = db_url.auth.substr(0, db_url.auth.indexOf(':'));
 var mypass = db_url.auth.substr(db_url.auth.indexOf(':') + 1, db_url.auth.length);
 var myhost = db_url.host;
-var mydb = db_url.pathname;
+var mydb = db_url.pathname.substr(1,db_url.pathname.length);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
