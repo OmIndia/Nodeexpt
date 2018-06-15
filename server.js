@@ -33,6 +33,10 @@ app.get("/", (req, res) => {
 
 app.post('/test', (request, response) => {
    console.log(request.body);
+   console.log(myuser);
+   console.log(mypass);
+   console.log(myhost);
+   console.log(mydb);
    conn.connect(function(err) {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
