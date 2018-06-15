@@ -34,15 +34,16 @@ app.get("/", (req, res) => {
 
 app.post('/test', (request, response) => {
    console.log(request.body);
-   console.log("JSON stringify is ",JSON.stringify(request.body));
+   var obj = JSON.stringify(request.body);
+   console.log("JSON stringify is ",obj);
    console.log("User is",myuser);
    console.log("Password is",mypass);
    console.log("Host is",myhost);
    console.log("Database is",mydb);
-   //var obj = JSON.parse(request);
-   //console.log("Id is ", obj.id);
-   //console.log("Timestamp is ", obj.timestamp);
-   //console.log("Value is ", obj.value);
+   var obj1 = JSON.parse(obj);
+   console.log("Id is ", obj1.id);
+   console.log("Timestamp is ", obj1.timestamp);
+   console.log("Value is ", obj1.value);
    
  /*  conn.connect(function(err) {
    if (err) throw err
