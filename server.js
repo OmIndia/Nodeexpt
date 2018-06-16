@@ -78,14 +78,15 @@ app.post('/test', (request, response) => {
     console.log("1 record inserted");
     });
 	
-  });
-  conn.end() (function(err) {
+	conn.end() (function(err) {
 	  if (err) {
-    console.error('error closing: ' + err.stack);
+    console.error('error closing connection: ' + err.stack);
     return;
 	}
      console.log("Connection is ended");// The connection is terminated now
    });
+  });
+  
  });
 
 app.listen(port, function() {
