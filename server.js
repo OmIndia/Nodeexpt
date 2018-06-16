@@ -59,7 +59,10 @@ app.post('/test', (request, response) => {
   database: mydb
    });
    conn.connect(function(err) {
-   if (err) throw err
+   if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+	}
    console.log('You are now connected to MySQL database...');
    //var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES(patid,ts,val)";
    //console.log("stmt is",stmt);
@@ -68,12 +71,21 @@ app.post('/test', (request, response) => {
   conn.query(stmt, function (err, result) {
 	//var params = [id,ts,val];
 	//conn.query('INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id,ts,val,1)', function (err, result) {
-    if (err) throw err;
+    if (err) {
+    console.error('error inserting: ' + err.stack);
+    return;
+	}
     console.log("1 record inserted");
     });
 	
   });
-  conn.end();
+  conn.end() (function(err) {
+	  if (err) {
+    console.error('error closing: ' + err.stack);
+    return;
+	}
+     console.log("Connection is ended");// The connection is terminated now
+   });
  });
 
 app.listen(port, function() {
