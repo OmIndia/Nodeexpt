@@ -19,13 +19,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
  
 module.exports = app;
 
+/*                                            Om - 16 Jun 2018 - moved within app.post
 var conn = mysql.createConnection({
   host: myhost,
   user: myuser,
   password: mypass,
   database: mydb
 });
-
+*/
 app.get("/", (req, res) => {
 
     res.send({ hello: "world" });
@@ -35,26 +36,33 @@ app.get("/", (req, res) => {
 app.post('/test', (request, response) => {
    console.log(request.body);
    var obj = JSON.stringify(request.body);
-   console.log("JSON stringify is ",obj);
+   /*console.log("JSON stringify is ",obj);
    console.log("User is",myuser);
    console.log("Password is",mypass);
    console.log("Host is",myhost);
    console.log("Database is",mydb);
    console.log(typeof obj.id);
+   */
    var obj1 = JSON.parse(obj);
    var patid = parseInt(obj1.id);
    var ts = parseInt(obj1.timestamp);
    var val = parseInt(obj1.value);
-   console.log(typeof patid);
+   /*console.log(typeof patid);
    console.log("Id is ", patid);
    console.log("Timestamp is ", ts);
    console.log("Value is ", val);
-   
+   */
+   var conn = mysql.createConnection({
+  host: myhost,
+  user: myuser,
+  password: mypass,
+  database: mydb
+   });
    conn.connect(function(err) {
    if (err) throw err
    console.log('You are now connected to MySQL database...');
-   var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES(patid,ts,val)";
-   console.log("stmt is",stmt);
+   //var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES(patid,ts,val)";
+   //console.log("stmt is",stmt);
    var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES("+patid+","+ts+","+val+")";
    console.log("stmt is",stmt);
   conn.query(stmt, function (err, result) {
@@ -62,8 +70,10 @@ app.post('/test', (request, response) => {
 	//conn.query('INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id,ts,val,1)', function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
-    }); 
+    });
+	
   });
+  conn.end();
  });
 
 app.listen(port, function() {
