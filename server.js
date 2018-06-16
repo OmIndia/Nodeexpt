@@ -19,14 +19,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
  
 module.exports = app;
 
-/*                                            Om - 16 Jun 2018 - moved within app.post
+
 var conn = mysql.createConnection({
   host: myhost,
   user: myuser,
   password: mypass,
   database: mydb
 });
-*/
+
+conn.connect(function(err) {
+   if (err) {
+    console.error('error connecting to MySQL database: ' + err.stack);
+    return;
+	}
+   console.log('You are now connected to MySQL database...');
+   });
+   
 app.get("/", (req, res) => {
 
     res.send({ hello: "world" });
@@ -52,18 +60,8 @@ app.post('/test', (request, response) => {
    console.log("Timestamp is ", ts);
    console.log("Value is ", val);
    */
-   var conn = mysql.createConnection({
-  host: myhost,
-  user: myuser,
-  password: mypass,
-  database: mydb
-   });
-   conn.connect(function(err) {
-   if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-	}
-   console.log('You are now connected to MySQL database...');
+   
+
    //var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES(patid,ts,val)";
    //console.log("stmt is",stmt);
    var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES("+patid+","+ts+","+val+")";
@@ -73,18 +71,19 @@ app.post('/test', (request, response) => {
 	//conn.query('INSERT INTO `ecgdata` (`id`, `timestamp`, `value`) VALUES(id,ts,val,1)', function (err, result) {
     if (err) {
     console.error('error inserting: ' + err.stack);
-    return;
-	}
-    console.log("1 record inserted");
-    });
-	
 	conn.end() (function(err) {
 	  if (err) {
     console.error('error closing connection: ' + err.stack);
     return;
 	}
      console.log("Connection is ended");// The connection is terminated now
-   });
+     });
+    return;
+	}
+    console.log("1 record inserted");
+    });
+	
+	
   });
   
  });
