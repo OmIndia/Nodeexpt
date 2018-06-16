@@ -86,8 +86,6 @@ app.post('/test', (request, response) => {
 	
   });
   
- });
-
 app.listen(port, function() {
     console.log('Our app is running on Heroku' + port);
 });
