@@ -1,4 +1,4 @@
-//Om - works Jun 14 2018 19:19 pm
+//Om - works Jun 14 2018 19:19 pm..updated Jun 16 2018 14:01
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -53,7 +53,13 @@ app.post('/test', (request, response) => {
    */
    var obj1 = JSON.parse(obj);
    var patid = parseInt(obj1.id);
-   var ts = parseInt(obj1.timestamp);
+   var day = parseInt(obj1.day);
+   var mon = parseInt(obj1.month);
+   var yr = parseInt(obj1.year);
+   var hour = parseInt(obj1.hour);
+   var min = parseInt(obj1.minute);
+   var sec = parseInt(obj1.second);
+   var millis = parseInt(obj1.millis);
    var val = parseInt(obj1.value);
    /*console.log(typeof patid);
    console.log("Id is ", patid);
@@ -62,9 +68,9 @@ app.post('/test', (request, response) => {
    */
    
 
-   //var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES(patid,ts,val)";
+   //var stmt = "INSERT INTO `ecgdata` (`patid`, `millis`, `value`) VALUES(patid,millis,val)";
    //console.log("stmt is",stmt);
-   var stmt = "INSERT INTO `ecgdata` (`patid`, `timestamp`, `value`) VALUES("+patid+","+ts+","+val+")";
+   var stmt = "INSERT INTO `ecgdata` (`patid`, `day`,`mon`,`yr`,`hour`,`min`,`sec`,`millis`, `value`) VALUES("+patid+","+day+","+mon+"+"+year+","+hour+","+min+","+sec+","+millis+","+val+")";
    console.log("stmt is",stmt);
   conn.query(stmt, function (err, result) {
 	//var params = [id,ts,val];
