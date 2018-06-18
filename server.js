@@ -70,7 +70,7 @@ app.post('/test', (request, response) => {
 
    //var stmt = "INSERT INTO `ecgdata` (`patid`, `millis`, `value`) VALUES(patid,millis,val)";
    //console.log("stmt is",stmt);
-   var stmt = "INSERT INTO `ecgdata` (`patid`, `day`,`mon`,`yr`,`hour`,`min`,`sec`,`millis`, `value`) VALUES("+patid+","+day+","+mon+"+"+yr+","+hour+","+min+","+sec+","+millis+","+val+")";
+   var stmt = "INSERT INTO `ecgdata` (`patid`, `day`,`mon`,`yr`,`hour`,`min`,`sec`,`millis`, `value`) VALUES("+patid+","+day+","+mon+","+yr+","+hour+","+min+","+sec+","+millis+","+val+")";
    console.log("stmt is",stmt);
   conn.query(stmt, function (err, result) {
 	//var params = [id,ts,val];
